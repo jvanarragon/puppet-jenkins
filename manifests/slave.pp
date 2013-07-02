@@ -14,7 +14,7 @@ class jenkins::slave (
   $manage_slave_user = 1,
   $slave_user = 'jenkins-slave',
   $slave_uid = undef,
-  $slave_home = '/home/jenkins-slave'
+  $slave_home = '/export/jenkins-slave'
 ) {
 
   $client_jar = "swarm-client-${version}-jar-with-dependencies.jar"

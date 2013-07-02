@@ -7,10 +7,17 @@ define jenkins::sysconfig ( $value ) {
     default => fail( "Unsupported OSFamily ${::osfamily}" )
   }
 
-  file_line { "Jenkins sysconfig setting ${name}":
-    path  => "${path}/jenkins",
-    line  => "${name}=\"${value}\"",
-    match => "^${name}=",
-  }
-}
+   # notify{"ik ben jaap sysconfig.pp, \"${path}/jenkins\" --- \"${name}=\"${value}\"":}
 
+  file { "/etc/default/jenkins":
+    ensure => present,
+    content => template('jenkins/jenkins-default.erb'),
+    notify  => Service[jenkins]
+  }
+
+  # file_line { "Jenkins sysconfig setting ${name}":
+  #   line  => "${name}=\"${value}\"",
+  #   path  => "${path}/jenkins",
+  #   match => "^${name}=",
+  #  } 
+ }

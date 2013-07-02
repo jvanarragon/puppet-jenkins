@@ -10,6 +10,7 @@
 #   }
 # }
 #
+
 class jenkins::config(
   $config_hash = {},
 ) {

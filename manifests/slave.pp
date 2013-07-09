@@ -9,12 +9,12 @@ class jenkins::slave (
   $masterurl = undef,
   $ui_user = undef,
   $ui_pass = undef,
-  $version = '1.8',
+  $version = '1.9',
   $executors = 2,
   $manage_slave_user = 1,
   $slave_user = 'jenkins-slave',
   $slave_uid = undef,
-  $slave_home = '/export/jenkins-slave'
+  $slave_home = '/home/jenkins-slave'
 ) {
 
   $client_jar = "swarm-client-${version}-jar-with-dependencies.jar"
@@ -29,8 +29,8 @@ class jenkins::slave (
     }
     'Debian': {
       #needs java package for debian.
-      fail( "Unsupported OS family: ${::osfamily}" )
-  #    $java_package=''
+      #fail( "Unsupported OS family: ${::osfamily}" )
+      $java_package = 'openjdk-7-jdk'
 
     }
 

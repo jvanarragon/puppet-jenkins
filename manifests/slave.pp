@@ -50,7 +50,8 @@ class jenkins::slave (
       comment    => 'Jenkins Slave user',
       home       => $slave_home,
       managehome => true,
-      uid        => $slave_uid
+      uid        => $slave_uid,
+      shell      => '/bin/bash'
     }
   }
 
@@ -61,6 +62,7 @@ class jenkins::slave (
       comment    => 'Jenkins Slave user',
       home       => $slave_home,
       managehome => true,
+      shell      => '/bin/bash'
     }
   }
 
